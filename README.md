@@ -1,1 +1,9 @@
 # Web
+## 環境構築方法
+### Docker
+- コンテナを構築
+```docker-compose build```
+- コンテを起動
+```docker-compose up```
+- コンテナ起動確認
+```docker-compose ps```
