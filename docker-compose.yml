@@ -1,0 +1,60 @@
+version: '3'
+
+services: 
+
+  api:
+    container_name: "api"
+    build: ./api
+    ports:
+      - 8080:8080
+    volumes: 
+      - ./api:/api
+    expose: 
+      - "8080"
+
+  front:
+    container_name: "react"
+    build: ./front
+    volumes:
+      - ./front:/front
+    links:
+      - api
+    depends_on: 
+      - api
+    ports:
+      - "3000:3000"
+    expose: 
+      - "3000"
+    tty: true
+  
+  nginx:
+    image: nginx:latest
+    container_name: "nginx"
+    ports:
+      - "80:80"
+    links:
+      - front
+      - api
+    depends_on: 
+      - front
+      - api
+    volumes: 
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf:cached
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:cached
+
+  mongo:
+    image: mongo
+    container_name: "mongo"
+    command: 
+      - mongod
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/data:/data/db
+      - ./mongo/logs:/var/log/mongodb
+  mongo-data:
+    image: busybox
+
+volumes: 
+      mongo-data:

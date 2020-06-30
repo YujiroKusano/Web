@@ -1,0 +1,5 @@
+node_modules
+nginx/logs
+mongo/logs
+*.log
+mongo/data
