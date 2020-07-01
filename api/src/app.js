@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const { json } = require("express");
 require('dotenv').config();
 
 // ポートとホストを設定
@@ -10,6 +11,14 @@ const HOST = process.env.HOST;
 
 // expressを使用
 const app = express();
+app.get('/', (req, res, next) => {
+  res.status(200);
+  res.json(
+    {
+      message: "HelloWorld"
+    }
+  );
+});
 
 // データベース接続
 mongoose.connect(

@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "start": "node ./src/app.js",
-    "start.dev": "nodemon"
+    "dev": "nodemon ./src/app.js"
   },
   "dependencies": {
     "express": "^4.17.1",
