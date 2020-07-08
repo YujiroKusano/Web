@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
-import LoginForm from '../../components/login/LoginForm';
-import RegistForm from '../../components/regitstor/RegistForm';
+import RegistForm from './RegistForm';
+import LoginForm from './LoginForm'
 const _regist = 0;
 const _login = 1;
 export default class Login extends React.Component {
@@ -34,10 +34,10 @@ export default class Login extends React.Component {
             <div>
                 {this.state.form}
                 <div class="container">
-                    <button hidden={this.state.display === _login} onClick={this.viewLoginForm}>アカウントをお持ちの方はこちら</button>
+                    <button onClick={this.viewLoginForm} hidden={this.state.display === _login} >アカウントをお持ちの方はこちら</button>
                 </div>
                 <div class="container">
-                    <a hidden={this.state.display === _login}>パスワードを忘れた方はコチラ</a><br/>
+                    <button hidden={this.state.display === _login}>パスワードを忘れた方はコチラ</button><br/>
                     <button onClick={this.viewRegistForm} hidden={this.state.display === _regist}>アカウントの新規作成</button>
               </div>
             </div>

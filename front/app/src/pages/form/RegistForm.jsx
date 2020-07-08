@@ -1,6 +1,6 @@
 import React from 'react'
 import Validate from '../../common/Validate';
-import ValidateErrorList from '../../pages/form/ValidateErrorList';
+import ValidateErrorList from './ValidateErrorList';
 
 export default class RegistForm extends React.Component {
     constructor(props) {
@@ -62,7 +62,7 @@ export default class RegistForm extends React.Component {
                 
                 <ValidateErrorList messages={this.state.passwordCheckErrors} />
                 <label><b>確認パスワード</b></label>
-                <input type="password" placeholder="Enter Password" name="passwordCheck" onChange={this.validatePasswordCheck}/>
+                <input type="password" placeholder="Enter Password" name="passwordCheck" onChange={this.validatePasswordCheck}/><br/>
 
                 <button type="submit">登録</button>
               </div>
