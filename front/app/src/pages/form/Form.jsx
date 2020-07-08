@@ -3,14 +3,14 @@ import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import LoginForm from '../../components/login/LoginForm';
 import RegistForm from '../../components/regitstor/RegistForm';
-const regist = 0;
-const login = 1;
+const _regist = 0;
+const _login = 1;
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             form: <RegistForm />,
-            display: regist
+            display: _regist
         }
         this.viewRegistForm = this.viewRegistForm.bind(this);
         this.viewLoginForm = this.viewLoginForm.bind(this);
@@ -18,13 +18,13 @@ export default class Login extends React.Component {
     viewRegistForm() {
         this.setState({
             form: <RegistForm />,
-            display: regist
+            display: _regist
         });
     }
     viewLoginForm() {
         this.setState({
             form: <LoginForm />,
-            display: login
+            display: _login
         });
     }
   render(){
@@ -34,11 +34,11 @@ export default class Login extends React.Component {
             <div>
                 {this.state.form}
                 <div class="container">
-                    <button hidden={this.state.display === login} onClick={this.viewLoginForm}>アカウントをお持ちの方はこちら</button>
+                    <button hidden={this.state.display === _login} onClick={this.viewLoginForm}>アカウントをお持ちの方はこちら</button>
                 </div>
                 <div class="container">
-                    <a hidden={this.state.display === login}>パスワードを忘れた方はコチラ</a><br/>
-                    <button onClick={this.viewRegistForm} hidden={this.state.display === regist}>アカウントの新規作成</button>
+                    <a hidden={this.state.display === _login}>パスワードを忘れた方はコチラ</a><br/>
+                    <button onClick={this.viewRegistForm} hidden={this.state.display === _regist}>アカウントの新規作成</button>
               </div>
             </div>
             <Footer />
