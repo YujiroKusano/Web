@@ -6,7 +6,8 @@ import LoadingOverlay from 'react-loading-overlay';
 class Auth extends React.Component {
 
     constructor(props) {
-        state = {
+        super(props)
+        this.state = {
             signinCheck: false, //ログインチェックが完了してるか
             signedIn: false, //ログインしてるか
         }

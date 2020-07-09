@@ -7,9 +7,13 @@ import firebase from '../Firebase';
 
 class SignUp extends React.Component {
 
-    state = {
-        loading: false, //処理中にボタンにspinner表示する制御用
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: false, //処理中にボタンにspinner表示する制御用
+        }
     }
+
 
     _isMounted = false;
 

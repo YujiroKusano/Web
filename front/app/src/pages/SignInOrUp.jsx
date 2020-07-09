@@ -9,15 +9,15 @@ class SignInOrUp extends React.Component {
 
     constructor(props) {
         super(props);
-        
+        this.state = {
+            loading: false, //spinner制御用
+        }
         this.loginWithGoogle = this.loginWithGoogle.bind(this);
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.componentWillUnmount = this.componentDidMount.bind(this);
     }
-    state = {
-        loading: false, //spinner制御用
-    }
+    
 
     _isMounted = false;
 
