@@ -43,9 +43,9 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="mx-auto" style={{ width: 400, background: '#eee', padding: 20, marginTop: 60 }}>
-                    <p style={{ textAlign: 'center' }}>新規登録</p>
+            <div>
+                <div>
+                    <p>新規登録</p>
                     <Formik
                         initialValues={{ email: '', password: '', tel: '' }}
                         onSubmit={(values) => this.handleOnSubmit(values)}
@@ -103,9 +103,9 @@ class SignUp extends React.Component {
                                             {errors.tel}
                                         </FormFeedback>
                                     </FormGroup>
-                                    <div style={{ textAlign: 'center' }}>
+                                    <div>
                                         <Button color="success" type="submit" disabled={this.state.loading}>
-                                            <Spinner size="sm" color="light" style={{ marginRight: 5 }} hidden={!this.state.loading} />
+                                            <Spinner size="sm" color="light" hidden={!this.state.loading} />
                                             新規登録
                                         </Button>
                                     </div>
@@ -114,7 +114,7 @@ class SignUp extends React.Component {
                         }
                     </Formik>
                 </div>
-                <div className="mx-auto" style={{ width: 400, background: '#fff', padding: 20 }}>
+                <div>
                     <Link to="/signin">ログインはこちら。</Link>
                 </div>
 

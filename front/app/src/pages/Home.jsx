@@ -11,7 +11,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <p>Home</p>
                 <Link to="/profile">Profileへ</Link>
                 <br />

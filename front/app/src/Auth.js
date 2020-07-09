@@ -5,9 +5,11 @@ import LoadingOverlay from 'react-loading-overlay';
 
 class Auth extends React.Component {
 
-    state = {
-        signinCheck: false, //ログインチェックが完了してるか
-        signedIn: false, //ログインしてるか
+    constructor(props) {
+        state = {
+            signinCheck: false, //ログインチェックが完了してるか
+            signedIn: false, //ログインしてるか
+        }
     }
 
     _isMounted = false; //unmountを判断（エラー防止用）

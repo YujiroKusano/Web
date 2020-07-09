@@ -3,10 +3,18 @@ import { Button, Form, FormGroup, Label, Input, FormFeedback, Spinner } from 're
 import { Link, withRouter } from 'react-router-dom'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import firebase from '../Firebase';
+import firebase, { providerGoogle } from '../Firebase';
 
 class SignInOrUp extends React.Component {
 
+    constructor(props) {
+        super(props);
+        
+        this.loginWithGoogle = this.loginWithGoogle.bind(this);
+        this.handleOnSubmit = this.handleOnSubmit.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.componentWillUnmount = this.componentDidMount.bind(this);
+    }
     state = {
         loading: false, //spinner制御用
     }
@@ -18,7 +26,7 @@ class SignInOrUp extends React.Component {
         if (this._isMounted) this.setState({ loading: true })
         //サインイン（ログイン）処理
         firebase.auth().signInWithEmailAndPassword(values.email, values.password)
-            .then(res => {
+            .then(result => {
                 //正常終了時
                 this.props.history.push("/");
                 if (this._isMounted) this.setState({ loading: false });
@@ -28,8 +36,23 @@ class SignInOrUp extends React.Component {
                 if (this._isMounted) this.setState({ loading: false });
                 alert(error);
             });
+        }
+        
+    loginWithGoogle() {
 
-    }
+        if (this._isMounted) this.setState({ loading: true })
+        firebase.auth().signInWithRedirect(providerGoogle);
+        firebase.auth().getRedirectResult()
+            .then(result => {
+                //正常終了時
+                this.props.history.push("/");
+                if (this._isMounted) this.setState({ loading: false });
+            }).catch(error => {
+                //異常終了時
+                if (this._isMounted) this.setState({ loading: false });
+                alert(error);
+            });
+      }
 
     componentDidMount = () => {
         this._isMounted = true;
@@ -42,8 +65,8 @@ class SignInOrUp extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="mx-auto" style={{ width: 400, background: '#eee', padding: 20, marginTop: 60 }}>
-                    <p style={{ textAlign: 'center' }}>サインイン</p>
+                <div >
+                    <p>サインイン</p>
                     <Formik
                         initialValues={{ email: '', password: '' }}
                         onSubmit={(values) => this.handleOnSubmit(values)}
@@ -85,9 +108,9 @@ class SignInOrUp extends React.Component {
                                             {errors.password}
                                         </FormFeedback>
                                     </FormGroup>
-                                    <div style={{ textAlign: 'center' }}>
+                                    <div>
                                         <Button color="primary" type="submit" disabled={this.state.loading}>
-                                            <Spinner size="sm" color="light" style={{ marginRight: 5 }} hidden={!this.state.loading} />
+                                            <Spinner size="sm" color="light"  hidden={!this.state.loading} />
                                             ログイン
                                         </Button>
                                     </div>
@@ -96,7 +119,11 @@ class SignInOrUp extends React.Component {
                         }
                     </Formik>
                 </div>
-                <div className="mx-auto" style={{ width: 400, background: '#fff', padding: 20 }}>
+                <Button color="primary" type="submit" onClick={this.loginWithGoogle} disabled={this.state.loading}>
+                    <Spinner size="sm" color="light" hidden={!this.state.loading} />
+                    GOOGLEアカウントでログイン
+                </Button>
+                <div >
                     <Link to="/signup">新規登録はこちら。</Link>
                 </div>
             </div>

@@ -17,7 +17,6 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path="/signin" component={SignInOrUp} />
                     <Route exact path="/signup" component={SignUp} />
-                    {/* 以下認証のみ */}
                     <Auth>
                         <Switch>
                             <Route exact path="/" component={Home} />
