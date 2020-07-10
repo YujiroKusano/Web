@@ -1,6 +1,10 @@
 # Web
 ## 環境構築方法
 ### Git
+- gitを初期化
+
+  ```git remote add origin https://github.com/YujiroKusano/Web.git```
+  
 - リモートレポジトリを設定
 
   ```git remote add origin https://github.com/YujiroKusano/Web.git```
