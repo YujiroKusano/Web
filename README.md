@@ -3,7 +3,7 @@
 ### Git
 - gitを初期化
 
-  ```git remote add origin https://github.com/YujiroKusano/Web.git```
+  ```git init```
   
 - リモートレポジトリを設定
 
