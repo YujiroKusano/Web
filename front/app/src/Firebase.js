@@ -2,10 +2,6 @@ import firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/auth";
 
-let dotenv = require('dotenv');
-const result = dotenv.config();
-console.log(result.parsed);
-
 var firebaseConfig = require("./Firebase.json");
 firebase.initializeApp(firebaseConfig);
 
