@@ -5,6 +5,12 @@ import { Button } from 'reactstrap';
 
 class Home extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.this = {
+        }
+    }
+
     handleLogout = () => {
         firebase.auth().signOut();
     }

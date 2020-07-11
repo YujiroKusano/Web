@@ -64,7 +64,7 @@ class SignInOrUp extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <div >
                     <p>サインイン</p>
                     <Formik
@@ -119,10 +119,6 @@ class SignInOrUp extends React.Component {
                         }
                     </Formik>
                 </div>
-                <Button color="primary" type="submit" onClick={this.loginWithGoogle} disabled={this.state.loading}>
-                    <Spinner size="sm" color="light" hidden={!this.state.loading} />
-                    GOOGLEアカウントでログイン
-                </Button>
                 <div >
                     <Link to="/signup">新規登録はこちら。</Link>
                 </div>

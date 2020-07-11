@@ -7,7 +7,6 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import SignInOrUp from './pages/SignInOrUp';
 import SignUp from './pages/SignUp';
-
 import Auth from './Auth';
 
 class App extends React.Component {
